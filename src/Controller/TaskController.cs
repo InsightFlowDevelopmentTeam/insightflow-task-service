@@ -42,6 +42,29 @@ namespace TaskService.src
             }
         }
 
+        [HttpGet("documents/{documentId}/tasks")]
+        public IActionResult GetTaskByDocumentId(Guid documentId)
+        {
+            try
+            {
+                
+                var Tasks = _taskRepository.GetTaskByDocumentId(documentId);
+
+                var response = new
+                {
+                    message = "Tareas Obtenidas con exito",
+                    Tasks = Tasks
+                };
+
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                
+                return StatusCode(500, new { message = e.Message });
+            }
+        }
+
         
 
 

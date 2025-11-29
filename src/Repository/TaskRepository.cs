@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskService.src.Data;
 using TaskService.src.Dto;
+using TaskService.src.Dtos;
 using TaskService.src.Interface;
 using TaskService.src.Mapper;
 using TaskService.src.Model;
@@ -20,7 +21,7 @@ namespace TaskService.src.Repository
 
         public ResponseCreateTaskDto CreateTask(CreateTaskDto request)
         {
-          var TaskRequest = new TaskModel
+            var TaskRequest = new TaskModel
             {
                 DocumentId = request.DocumentId,
                 UserId = request.UserId,
@@ -34,6 +35,22 @@ namespace TaskService.src.Repository
             _container.Tasks.Add(TaskRequest);
 
             return TaskRequest.ToCreateTaskResponse();
+        }
+
+        public List<ResponseGetTaskByDocumentDto> GetTaskByDocumentId(Guid DocumentId)
+        {
+            var result = _container.Tasks.Where( t => t.DocumentId == DocumentId && t.IsActive)
+            .Select(t => new ResponseGetTaskByDocumentDto
+            {
+                Id = t.Id,
+                UserId = t.UserId,
+                Title = t.Title,
+                State = t.State,
+                ExpirationDate = t.ExpirationDate
+
+            }).ToList();
+
+            return result;
         }
     }
 }
