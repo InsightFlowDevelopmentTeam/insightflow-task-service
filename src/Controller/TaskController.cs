@@ -8,15 +8,35 @@ using TaskService.src.Interface;
 
 namespace TaskService.src
 {
-    [ApiController]
+    // <summary>
+    /// Controlador encargado de CRUD de tareas 
+    /// </summary>
+        [ApiController]
     public class TaskController : ControllerBase
     {
         private readonly ITaskRepository _taskRepository;
+
+        /// <summary>
+        /// Constructor del controlador que inyecta el repositorio de tareas.
+        /// </summary>
+        /// <param name="taskRepository">
+        /// Repositorio encargado de manejar la lógica de acceso a datos para tareas.
+        /// </param>
         public TaskController(ITaskRepository taskRepository)
         {
             _taskRepository = taskRepository;
         }
 
+        /// <summary>
+        /// Crea una nueva tarea en el sistema.
+        /// </summary>
+        /// <param name="request">
+        /// Dto con datos necesarios para crear la tarea.
+        /// </param>
+        /// <returns>
+        /// Un objeto IActionResult que contiene un mensaje de confirmación
+        /// y los datos de la tarea creada.
+        /// </returns>
         [HttpPost("tasks")]
         public IActionResult CreateTask(CreateTaskDto request)
         {
@@ -43,18 +63,27 @@ namespace TaskService.src
             }
         }
 
+        /// <summary>
+        /// Obtiene todas las tareas asociadas a un documento específico.
+        /// </summary>
+        /// <param name="documentId">
+        /// Identificador único del documento.
+        /// </param>
+        /// <returns>
+        /// Un objeto IActionResult que contiene las tareas encontradas.
+        /// </returns>
         [HttpGet("documents/{documentId}/tasks")]
         public IActionResult GetTaskByDocumentId(Guid documentId)
         {
             try
             {
                 
-                var Tasks = _taskRepository.GetTaskByDocumentId(documentId);
+                var tasks = _taskRepository.GetTaskByDocumentId(documentId);
 
                 var response = new
                 {
                     message = "Tareas Obtenidas con exito",
-                    Tasks = Tasks
+                    Tasks = tasks
                 };
 
                 return Ok(response);
@@ -66,6 +95,16 @@ namespace TaskService.src
             }
         }
 
+        /// <summary>
+        /// Obtiene una tarea específica según su identificador único.
+        /// </summary>
+        /// <param name="Id">
+        /// Identificador único de la tarea.
+        /// </param>
+        /// <returns>
+        /// Un objeto IActionResult con la tarea solicitada, 
+        /// o un error si no se encuentra.
+        /// </returns>
         [HttpGet("tasks/{Id}")]
         public IActionResult GetTaskById (Guid Id)
         {
@@ -93,6 +132,18 @@ namespace TaskService.src
             }
         }
 
+        /// <summary>
+        /// Edita una tarea existente mediante su identificador único.
+        /// </summary>
+        /// <param name="Id">
+        /// Identificador único de la tarea a editar.
+        /// </param>
+        /// <param name="request">
+        /// Dto con los datos con los cambios a aplicar.
+        /// </param>
+        /// <returns>
+        /// Un objeto IActionResult que contiene los datos de la tarea editada.
+        /// </returns>
         [HttpPut("tasks/{Id}")]
         public IActionResult EditTask(Guid Id, EditTaskDto request)
         {
@@ -119,6 +170,15 @@ namespace TaskService.src
             }
         }
 
+        /// <summary>
+        /// Cambia el estado de una tarea entre activa y papelera (Soft Delete).
+        /// </summary>
+        /// <param name="Id">
+        /// Identificador único de la tarea.
+        /// </param>
+        /// <returns>
+        /// Un objeto IActionResult con un mensaje indicando el nuevo estado.
+        /// </returns>
         [HttpPatch("tasks/{Id}")]
         public IActionResult ToggleTrashCan(Guid Id)
         {
