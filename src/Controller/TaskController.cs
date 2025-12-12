@@ -11,7 +11,7 @@ namespace TaskService.src
     // <summary>
     /// Controlador encargado de CRUD de tareas 
     /// </summary>
-        [ApiController]
+    [ApiController]
     public class TaskController : ControllerBase
     {
         private readonly ITaskRepository _taskRepository;
