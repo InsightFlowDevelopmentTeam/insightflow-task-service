@@ -28,6 +28,19 @@ builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 // Construye la aplicación.
 var app = builder.Build();
 
+//CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
+app.UseCors("AllowAll");
 // Configuraciones específicas del entorno de Desarrollo.
 if (app.Environment.IsDevelopment())
 {
