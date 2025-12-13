@@ -43,5 +43,10 @@ namespace TaskService.src.Dtos
         /// Comentarios de la tarea.
         /// </summary>
         public string? Comments {get;set;} 
+
+        /// <summary>
+        /// Indica si tarea esta activa o no (Soft Delete).
+        /// </summary> 
+        public bool IsActive {get; set;} = true; 
     }
 }

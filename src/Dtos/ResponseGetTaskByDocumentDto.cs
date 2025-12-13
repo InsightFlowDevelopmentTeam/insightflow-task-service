@@ -36,5 +36,10 @@ namespace TaskService.src.Dtos
         /// Fecha de finalización de la tarea.
         /// </summary>
         public string ExpirationDate {get;set;} = string.Empty!;
+
+        /// <summary>
+        /// Indica si tarea esta activa o no (Soft Delete).
+        /// </summary> 
+        public bool IsActive {get; set;} = true; 
     }
 }
