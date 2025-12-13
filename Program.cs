@@ -13,6 +13,16 @@ builder.Services.AddEndpointsApiExplorer();
 // Configuración de los Controllers.
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 // Configuración de la Inyección de Dependencias (DI):
 
 // Contenedor (Almacenamiento en memoria):
@@ -28,19 +38,8 @@ builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 // Construye la aplicación.
 var app = builder.Build();
 
-//CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
-});
-
 app.UseCors("AllowAll");
+
 // Configuraciones específicas del entorno de Desarrollo.
 if (app.Environment.IsDevelopment())
 {
