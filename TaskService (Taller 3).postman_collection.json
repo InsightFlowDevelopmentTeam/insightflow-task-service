@@ -1,0 +1,670 @@
+{
+	"info": {
+		"_postman_id": "b897c74f-fff1-4217-8ff0-16baa2d319f1",
+		"name": "TaskService (Taller 3)",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38011680"
+	},
+	"item": [
+		{
+			"name": "Create Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"documentId\": \"11111111-1111-1111-1111-111111111111\",\r\n  \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\r\n  \"title\": \"Configuracion de Imagen Docker\",\r\n  \"completeDescription\": null,\r\n  \"state\": \"En Progreso\",\r\n  \"expirationDate\": \"15/01/2026\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://task-service-api.onrender.com/tasks",
+					"protocol": "https",
+					"host": [
+						"task-service-api",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Create Task Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"documentId\": \"11111111-1111-1111-1111-111111111111\",\r\n  \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\r\n  \"title\": \"Configuración de Imagen Docker del proyecto\",\r\n  \"completeDescription\": null,\r\n  \"state\": \"En Progreso\",\r\n  \"expirationDate\": \"15/01/2026\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://task-service-api.onrender.com/tasks",
+							"protocol": "https",
+							"host": [
+								"task-service-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 13 Dec 2025 05:32:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9ad314e5eeffeabb-SCL"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "rndr-id",
+							"value": "0af77ad0-8028-4a64"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Tarea creada con exito\",\n    \"task\": {\n        \"id\": \"ca3f4c92-d7d5-4230-ad72-01d902bd7c13\",\n        \"documentId\": \"11111111-1111-1111-1111-111111111111\",\n        \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\n        \"title\": \"Configuración de Imagen Docker del proyecto\",\n        \"completeDescription\": null,\n        \"state\": \"En Progreso\",\n        \"expirationDate\": \"15/01/2026\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Tasks By Document Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://task-service-api.onrender.com/tasks/documents/11111111-1111-1111-1111-111111111111/tasks",
+					"protocol": "https",
+					"host": [
+						"task-service-api",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tasks",
+						"documents",
+						"11111111-1111-1111-1111-111111111111",
+						"tasks"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": [
+				{
+					"name": "Get Tasks By Document Id Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://task-service-api.onrender.com/documents/11111111-1111-1111-1111-111111111111/tasks",
+							"protocol": "https",
+							"host": [
+								"task-service-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"documents",
+								"11111111-1111-1111-1111-111111111111",
+								"tasks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 13 Dec 2025 05:32:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9ad3153bbafbeabb-SCL"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "rndr-id",
+							"value": "0aedf728-880d-4025"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Tareas Obtenidas con exito\",\n    \"tasks\": [\n        {\n            \"id\": \"2d4ca0f1-53bf-4bb9-b1ab-7270616587e6\",\n            \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\n            \"title\": \"Configurar Pipeline CI/CD en GitHub Actions\",\n            \"state\": \"En Progreso\",\n            \"expirationDate\": \"19/01/2026\"\n        },\n        {\n            \"id\": \"bbfd49d2-44fa-4e50-943e-fb74a5d05421\",\n            \"userId\": \"9fd8ec52-3aa4-4097-86fa-2c576bc06e01\",\n            \"title\": \"Diseñar Componentes de Tablero Kanban\",\n            \"state\": \"Pendiente\",\n            \"expirationDate\": \"30/01/2026\"\n        },\n        {\n            \"id\": \"270fe47e-c831-4a9f-8bd7-f85b98a56bd9\",\n            \"userId\": \"a08799f8-746f-46b4-8134-2ef211fe705a\",\n            \"title\": \"Implementar Endpoints de Users Service\",\n            \"state\": \"Completado\",\n            \"expirationDate\": \"20/01/2026\"\n        },\n        {\n            \"id\": \"ca3f4c92-d7d5-4230-ad72-01d902bd7c13\",\n            \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\n            \"title\": \"Configuración de Imagen Docker del proyecto\",\n            \"state\": \"En Progreso\",\n            \"expirationDate\": \"15/01/2026\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Task By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/info?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Get Task By Id",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://task-service-api.onrender.com/tasks/3b025a0b-6ca8-4e3f-a0ef-2a27715246e5",
+							"protocol": "https",
+							"host": [
+								"task-service-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"tasks",
+								"3b025a0b-6ca8-4e3f-a0ef-2a27715246e5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 13 Dec 2025 05:33:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9ad315f9ccc5eabb-SCL"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "rndr-id",
+							"value": "496c0dbc-519d-4a40"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Tareas Obtenidas con exito\",\n    \"task\": {\n        \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\n        \"title\": \"Desarrollo de Prototipo UI Móvil\",\n        \"completeDescription\": null,\n        \"state\": \"Completado\",\n        \"expirationDate\": \"15/02/2026\",\n        \"comments\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/info?id=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"info"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+			},
+			"response": [
+				{
+					"name": "Edit Task Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": null,\r\n  \"title\": null,\r\n  \"completeDescription\": \"Desarrollar las disitntas pages para la UI movil en Figma\",\r\n  \"state\": null,\r\n  \"expirationDate\": null,\r\n  \"comments\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://task-service-api.onrender.com/tasks/3b025a0b-6ca8-4e3f-a0ef-2a27715246e5",
+							"protocol": "https",
+							"host": [
+								"task-service-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"tasks",
+								"3b025a0b-6ca8-4e3f-a0ef-2a27715246e5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 13 Dec 2025 05:36:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9ad31b03eb36e797-SCL"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "rndr-id",
+							"value": "3a2c89a0-1d44-4e16"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Tarea Editada con exito\",\n    \"task\": {\n        \"id\": \"3b025a0b-6ca8-4e3f-a0ef-2a27715246e5\",\n        \"userId\": \"2db519ca-4836-4e01-977f-ec518a081d54\",\n        \"title\": \"Desarrollo de Prototipo UI Móvil\",\n        \"completeDescription\": \"Desarrollar las disitntas pages para la UI movil en Figma\",\n        \"state\": \"Completado\",\n        \"expirationDate\": \"15/02/2026\",\n        \"comments\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Send Task To Trash Can (Soft Delete)",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://task-service-api.onrender.com/tasks/270fe47e-c831-4a9f-8bd7-f85b98a56bd9",
+					"protocol": "https",
+					"host": [
+						"task-service-api",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"tasks",
+						"270fe47e-c831-4a9f-8bd7-f85b98a56bd9"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Send Task To Trash Can (Soft Delete) Response",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://task-service-api.onrender.com/tasks/270fe47e-c831-4a9f-8bd7-f85b98a56bd9",
+							"protocol": "https",
+							"host": [
+								"task-service-api",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"tasks",
+								"270fe47e-c831-4a9f-8bd7-f85b98a56bd9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 13 Dec 2025 05:44:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9ad325aa3f3fb508-SCL"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "rndr-id",
+							"value": "e5abbd20-2b1a-48bc"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Tarea enviada a papelera\",\n    \"isActive\": false\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://template.postman-echo.com"
+		}
+	]
+}
